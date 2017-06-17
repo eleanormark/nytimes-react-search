@@ -24,8 +24,9 @@ var helper = {
         for (let article of response.data.response.docs) {
           let info = {};
           info["title"] = article.headline.main;
-          info["date"] = article.pub_date;
+          info["pub_date"] = article.pub_date;
           info["url"] = article.web_url;
+          info["snippet"] = article.snippet;
           info["_id"] = article._id;
           fetchResult.push(info);
         }
@@ -36,13 +37,23 @@ var helper = {
   },
 
   // This function hits our own server to retrieve the record of query results
-  getHistory: function() {
+  getSaved: function() {
     return axios.get("/api");
   },
 
   // This function posts new searches to our database.
-  postHistory: function(location) {
-    return axios.post("/api", { location: location });
+  postSaved: function(obj) {
+    return axios.post("/api", {
+      title: obj.title,
+      snippet: obj.snippet,
+      url: obj.url,
+      pub_date: obj.pub_date,
+      _id: obj._id
+    });
+  },
+
+  deleteSaved: function(toDel) {
+    return axios.put("/api", toDel);
   }
 };
 

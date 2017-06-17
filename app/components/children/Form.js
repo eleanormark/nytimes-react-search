@@ -12,23 +12,19 @@ var Form = React.createClass({
 
   // This function will respond to the user input
   handleChange: function(event) {
-    console.log("term: " + event.target.value)
+    console.log("term: " + event.target.value);
     this.setState({ term: event.target.value });
 
   },
 
-  // This function will respond to the user input
   handleBeginDateChange: function(event) {
-    console.log("Begin Date" + event.target.value)
-
+    console.log("Begin Date" + event.target.value);
     this.setState({ begin_date: event.target.value });
 
   },
 
-  // This function will respond to the user input
   handleEndDateChange: function(event) {
-    console.log("End Date: " + event.target.value)
-
+    console.log("End Date: " + event.target.value);
     this.setState({ end_date: event.target.value });
 
   },
@@ -39,21 +35,12 @@ var Form = React.createClass({
     // clicking the button
     event.preventDefault();
 
-    var searchQuery = {
-      term: this.state.term,
-      begin_date: this.state.begin_date,
-      end_date: this.state.end_date
-    }
-
-    helpers.runQuery(searchQuery).then(function(response) {
-      console.log(response)
-      this.setState({ term: "", begin_date: "", end_date: "" });
-    }.bind(this));
-
     // Set the parent to have the search term
-    // this.props.setTerm(this.state.term);
+    console.log(this.state.begin_date);
+    this.props.setTerm(this.state.term, this.state.begin_date, this.state.end_date) ;
+  
     // this.props.setBeginDate(this.state.begin_date);
-    // this.setState({ term: "", begin_date: ""});
+    this.setState({ term: "", begin_date: "", end_date: "" });
   },
   // Here we describe this component's render method
   render: function() {
