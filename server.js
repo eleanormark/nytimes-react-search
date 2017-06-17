@@ -71,7 +71,7 @@ app.post("/api", function(req, res) {
     snippet: req.body.snippet,
     url: req.body.url,
     pub_date: req.body.date,
-    _id: req.body._id,
+    art_id: req.body.art_id,
     date: Date.now()
   }, function(err) {
     if (err) {
@@ -83,6 +83,19 @@ app.post("/api", function(req, res) {
   });
 });
 
+app.delete('/api', function(req, res){
+
+  var url = req.param('url');
+
+  Article.find({"url": url}).remove().exec(function(err, data){
+    if(err){
+      console.log(err);
+    }
+    else {
+      res.send("Deleted");
+    }
+  });
+});
 // -------------------------------------------------
 
 // Listener

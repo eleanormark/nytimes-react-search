@@ -27,7 +27,7 @@ var helper = {
           info["pub_date"] = article.pub_date;
           info["url"] = article.web_url;
           info["snippet"] = article.snippet;
-          info["_id"] = article._id;
+          info["art_id"] = article._id;
           fetchResult.push(info);
         }
       }
@@ -48,7 +48,7 @@ var helper = {
       snippet: obj.snippet,
       url: obj.url,
       pub_date: obj.pub_date,
-      _id: obj._id
+      art_id: obj.art_id
     });
   },
 

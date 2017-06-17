@@ -67,14 +67,13 @@ var Main = React.createClass({
           alert();
       }
    } 
-    this.setState({ results: this.state.results});
 
   },
 
   // This function allows childrens to update the parent.
   removeResult: function(id) {
-    alert("in removeResult");
     let indexToRemove = -1
+      alert(this.state.results);
     for (let i = 0; i < this.state.results.length; i++) {
       if (this.state.results[i]._id === id) {
         indexToRemove = i

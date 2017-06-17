@@ -18,7 +18,7 @@ var ArticleSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  _id: {
+  art_id: {
     type: String
   }
 });
