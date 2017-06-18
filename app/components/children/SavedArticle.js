@@ -9,26 +9,23 @@ var SavedArticle = React.createClass({
     return { result:[]};
   },
 
-   // This function will respond to the user input
   componentDidMount: function() {
-    this.getArticles();
+    this.getSavedArticles();
   },
 
-  getArticles: function() {
+  getSavedArticles: function() {
 
     helpers.getSaved().then(function(response) {
       if (response !== this.state.result) {
-        console.log("Saved Articles", response.data);
         this.setState({ result: response.data });
       }
     }.bind(this));
   },
 
   handleDelete: function(article) {
-    console.log("delete", article);
-      helpers.deleteSaved(article.title).then(function(data) {
-        this.getArticles();
-
+    
+      helpers.deleteSaved(article.url).then(function(data) {
+        this.getSavedArticles();
       }.bind(this));
   },
 
