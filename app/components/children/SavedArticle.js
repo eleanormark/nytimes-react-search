@@ -1,17 +1,36 @@
 // Include React
 var React = require("react");
+var helpers = require("../utils/helpers");
 
 // This is the History component. It will be used to show a log of  recent searches.
 var SavedArticle = React.createClass({
 
-  handleDelete: function(article) {
+  getInitialState: function() {
+    return { result:[]};
+  },
 
-  console.log("delete", article);
-    helpers.deleteSave(article.title).then(function(data) {
-       this.getArticles();
+   // This function will respond to the user input
+  componentDidMount: function() {
+    this.getArticles();
+  },
 
+  getArticles: function() {
+
+    helpers.getSaved().then(function(response) {
+      if (response !== this.state.result) {
+        console.log("Saved Articles", response.data);
+        this.setState({ result: response.data });
+      }
     }.bind(this));
-  }.bind(this),
+  },
+
+  handleDelete: function(article) {
+    console.log("delete", article);
+      helpers.deleteSaved(article.title).then(function(data) {
+        this.getArticles();
+
+      }.bind(this));
+  },
 
   // Here we describe this component's render method
   render: function() {
@@ -24,7 +43,7 @@ var SavedArticle = React.createClass({
         <div className="panel-body">
 
           {/* Here we use a map function to loop through an array in JSX */}
-          {this.props.savedArticleInfo.map(function(articleInfo, i) {
+          {this.state.result.map(function(articleInfo, i) {
             return (
               <div key={i}>
                 <button onClick={that.handleDelete.bind(that, articleInfo)} className="btn btn-default btn-xs">Delete</button>

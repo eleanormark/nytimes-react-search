@@ -52,10 +52,10 @@ var helper = {
     });
   },
 
-  deleteSave: function(title) {
-      console.log(title);
+  deleteSaved: function(url) {
+      console.log(url);
       return axios.post("/api/delete", {
-          title: title
+          url: url
 
       });
   },

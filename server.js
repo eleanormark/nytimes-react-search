@@ -85,7 +85,7 @@ app.post("/api", function(req, res) {
 
 app.post("/api/delete", function(req, res) {
     console.log(req.body);
-    Articles.remove({ title: req.body.title }, function(err) {
+    Article.remove({ title: req.body.url}, function(err) {
         if (!err) {
             res.send("DELETED!");
         } else {

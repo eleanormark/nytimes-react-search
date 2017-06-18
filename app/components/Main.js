@@ -18,17 +18,17 @@ var Main = React.createClass({
     return { searchTerm: "", searchBegindate:"", searchEnddate:"", results: [], saveState: false, savedArticls: [] };
   },
 
-  // The moment the page renders get the saved articles
-  componentDidMount: function() {
-    // Get the latest history.
-    helpers.getSaved().then(function(response) {
-      console.log(response);
-      if (response !== this.state.savedArticls) {
-        console.log("History", response.data);
-        this.setState({ savedArticls: response.data });
-      }
-    }.bind(this));
-  },
+  //The moment the page renders get the saved articles
+  // componentDidMount: function() {
+  //   // Get the latest history.
+  //   helpers.getSaved().then(function(response) {
+  //     console.log(response);
+  //     if (response !== this.state.savedArticls) {
+  //       console.log("History", response.data);
+  //       this.setState({ savedArticls: response.data });
+  //     }
+  //   }.bind(this));
+  // },
 
   // If the component changes (i.e. if a search is entered)...
   componentDidUpdate: function() {
@@ -60,7 +60,14 @@ var Main = React.createClass({
 
           //   }.bind(this));
           // }.bind(this));
+        } else {
+          
+            helpers.getSaved().then(function(response) {
+              console.log("Current History", response.data);
+              this.setState({ savedArticls: response.data });
+            }.bind(this));
         }
+
       }.bind(this));
 
       if (this.saveState) {
@@ -71,6 +78,12 @@ var Main = React.createClass({
   },
 
   // This function allows childrens to update the parent.
+
+  setResult: function() {
+    alert("setResult");
+    this.setState({ results: []})
+  },
+
   removeResult: function(id) {
     let indexToRemove = -1
       alert(this.state.results);
