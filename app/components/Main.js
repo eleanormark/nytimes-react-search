@@ -18,18 +18,6 @@ var Main = React.createClass({
     return { searchTerm: "", searchBegindate:"", searchEnddate:"", results: [], saveState: false, savedArticls: [] };
   },
 
-  //The moment the page renders get the saved articles
-  // componentDidMount: function() {
-  //   // Get the latest history.
-  //   helpers.getSaved().then(function(response) {
-  //     console.log(response);
-  //     if (response !== this.state.savedArticls) {
-  //       console.log("History", response.data);
-  //       this.setState({ savedArticls: response.data });
-  //     }
-  //   }.bind(this));
-  // },
-
   // If the component changes (i.e. if a search is entered)...
   componentDidUpdate: function() {
     
@@ -47,26 +35,7 @@ var Main = React.createClass({
         if (data !== this.state.results) {
           console.log("Address", data);
           this.setState({ results: data });
-
-          // After we've received the result... then post the search term to our saved articles
-          // helpers.postSaved(obj).then(function() {
-          //   console.log("Updated!");
-
-          //   // After we've done the post... then get the updated saved articles
-          //   helpers.getSaved().then(function(response) {
-          //     console.log("Current History", response.data);
-
-          //     this.setState({ savedArticls: response.data });
-
-          //   }.bind(this));
-          // }.bind(this));
-        } else {
-          
-            helpers.getSaved().then(function(response) {
-              console.log("Current History", response.data);
-              this.setState({ savedArticls: response.data });
-            }.bind(this));
-        }
+        } 
 
       }.bind(this));
 
