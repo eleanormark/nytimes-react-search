@@ -83,18 +83,16 @@ app.post("/api", function(req, res) {
   });
 });
 
-app.delete('/api', function(req, res){
+app.post("/api/delete", function(req, res) {
+    console.log(req.body);
+    Articles.remove({ title: req.body.title }, function(err) {
+        if (!err) {
+            res.send("DELETED!");
+        } else {
+            console.log(err);
+        }
+    });
 
-  var url = req.param('url');
-
-  Article.find({"url": url}).remove().exec(function(err, data){
-    if(err){
-      console.log(err);
-    }
-    else {
-      res.send("Deleted");
-    }
-  });
 });
 // -------------------------------------------------
 

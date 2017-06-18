@@ -52,9 +52,13 @@ var helper = {
     });
   },
 
-  deleteSaved: function(toDel) {
-    return axios.put("/api", toDel);
-  }
+  deleteSave: function(title) {
+      console.log(title);
+      return axios.post("/api/delete", {
+          title: title
+
+      });
+  },
 };
 
 // We export the API helper
