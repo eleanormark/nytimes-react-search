@@ -39,9 +39,6 @@ var Main = React.createClass({
 
       }.bind(this));
 
-      if (this.saveState) {
-          alert();
-      }
    } 
 
   },
@@ -76,9 +73,6 @@ var Main = React.createClass({
     this.setState({ searchEnddate: end_date });
   },
 
-  setSaveArticle: function(save) {
-    his.setState({ saveState: save });
-  },
   // Here we render the function
   render: function() {
     return (

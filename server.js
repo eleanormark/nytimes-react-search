@@ -10,7 +10,7 @@ var Article = require("./models/Article");
 // Create Instance of Express
 var app = express();
 // Sets an initial port. We'll use this later in our listener
-var PORT = process.env.PORT || 9000;
+var PORT = process.env.PORT || 8000;
 
 // Run Morgan for Logging
 app.use(logger("dev"));
@@ -85,7 +85,7 @@ app.post("/api", function(req, res) {
 
 app.post("/api/delete", function(req, res) {
     console.log(req.body);
-    Article.remove({ title: req.body.url}, function(err) {
+    Article.remove({ url: req.body.url}, function(err) {
         if (!err) {
             res.send("DELETED!");
         } else {
