@@ -49,17 +49,17 @@ var Main = React.createClass({
           this.setState({ results: data });
 
           // After we've received the result... then post the search term to our saved articles
-          helpers.postSaved(obj).then(function() {
-            console.log("Updated!");
+          // helpers.postSaved(obj).then(function() {
+          //   console.log("Updated!");
 
-            // After we've done the post... then get the updated saved articles
-            helpers.getSaved().then(function(response) {
-              console.log("Current History", response.data);
+          //   // After we've done the post... then get the updated saved articles
+          //   helpers.getSaved().then(function(response) {
+          //     console.log("Current History", response.data);
 
-              this.setState({ savedArticls: response.data });
+          //     this.setState({ savedArticls: response.data });
 
-            }.bind(this));
-          }.bind(this));
+          //   }.bind(this));
+          // }.bind(this));
         }
       }.bind(this));
 
