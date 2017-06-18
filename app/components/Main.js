@@ -115,11 +115,11 @@ var Main = React.createClass({
         <div className="row">
 
           {/*<Results articleInfo={this.state.results} />*/}
-        {this.state.results.map(function(res, i) {
+          {this.state.results.map(function(res, i) {
                 return (
                   <Results removeResult={this.removeResult} articleInfo={res} key={i} />
                 );
-         }.bind(this))}
+          }.bind(this))}
 
         </div>
 

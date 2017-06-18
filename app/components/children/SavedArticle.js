@@ -13,9 +13,9 @@ var SavedArticle = React.createClass({
         <div className="panel-body">
 
           {/* Here we use a map function to loop through an array in JSX */}
-          {this.props.savedArticleInfo.map(function(search, i) {
+          {this.props.savedArticleInfo.map(function(article, i) {
             return (
-              <p key={i}>{search.title} - {search.date}</p>
+              <p key={i}>{article.title} &nbsp;•&nbsp; Saved on {article.date.substring(0,10)}</p>
             );
           })}
         </div>
