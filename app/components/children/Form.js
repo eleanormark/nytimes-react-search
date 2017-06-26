@@ -50,11 +50,11 @@ var Form = React.createClass({
           <h3 className="panel-title">Query</h3>
         </div>
         <div className="panel-body">
-          <form onSubmit={this.handleSubmit}>
+          <form className="form-inline" onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <h4 className="">
-                Search Term:
-              </h4>
+              <label for="search-term" className="">
+                Search Term: &nbsp; 
+              </label>
 
               {/*
                 Note how each of the form elements has an id that matches the state.
@@ -68,11 +68,14 @@ var Form = React.createClass({
                 id="term"
                 onChange={this.handleChange}
                 required
+                name="search-term"
               />
-
-              <h4 className="">
-                Begin Year (YYYY):
-              </h4>
+               &nbsp; &nbsp; 
+            </div>
+            <div className="form-group">
+              <label for="begin-year" className="">
+                 Begin Year:  &nbsp;
+              </label>
 
               <input
                 value={this.state.begin_date}
@@ -81,11 +84,15 @@ var Form = React.createClass({
                 id="begin_date"
                 onChange={this.handleBeginDateChange}
                 required
+                placeholder="YYYY"
+                name="begin-year"
               />
-
-              <h4 className="">
-                End Year (YYYY):
-              </h4>
+               &nbsp; &nbsp; 
+            </div>
+            <div className="form-group">
+              <label for="end-year" className="">
+                 End Year: &nbsp; 
+              </label>
 
               <input
                 value={this.state.end_date}
@@ -94,15 +101,19 @@ var Form = React.createClass({
                 id="end_date"
                 onChange={this.handleEndDateChange}
                 required
+                placeholder="YYYY"
+                name="end-year"
               />
-              <br />
+                 &nbsp; &nbsp; 
+              </div>
+    
               <button
-                className="btn btn-primary"
+                className="btn btn-default"
                 type="submit"
               >
                 Submit
               </button>
-            </div>
+            
           </form>
         </div>
       </div>
