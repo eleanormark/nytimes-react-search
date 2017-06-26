@@ -8,9 +8,7 @@ var Results = React.createClass({
   handleSubmit: function() {
     event.preventDefault();
     helpers.postSaved(this.props.articleInfo).then(function(response) {
-      console.log("Response=================");
-      console.log(this.props);
-      // this.props.removeResult(this.props.articleInfo._id)
+      this.props.removeResult(this.props.articleInfo._id)
     }.bind(this))
   },
 

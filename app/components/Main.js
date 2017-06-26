@@ -15,7 +15,7 @@ var Main = React.createClass({
   // Here we set a generic state associated with the number of clicks
   // Note how we added in this history state variable
   getInitialState: function() {
-    return { searchTerm: "", searchBegindate:"", searchEnddate:"", results: [], saveState: false, savedArticls: [] };
+    return { searchTerm: "", searchBegindate:"", searchEnddate:"", results: [], savedArticls: [] };
   },
 
   // If the component changes (i.e. if a search is entered)...
@@ -39,20 +39,16 @@ var Main = React.createClass({
 
       }.bind(this));
 
-   } 
+      this.setState({searchTerm: ""});
+   }
 
   },
 
   // This function allows childrens to update the parent.
 
-  setResult: function() {
-    alert("setResult");
-    this.setState({ results: []})
-  },
-
   removeResult: function(id) {
     let indexToRemove = -1
-      alert(this.state.results);
+
     for (let i = 0; i < this.state.results.length; i++) {
       if (this.state.results[i]._id === id) {
         indexToRemove = i
