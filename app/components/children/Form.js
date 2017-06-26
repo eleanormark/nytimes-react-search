@@ -12,21 +12,15 @@ var Form = React.createClass({
 
   // This function will respond to the user input
   handleChange: function(event) {
-    console.log("term: " + event.target.value);
     this.setState({ term: event.target.value });
-
   },
 
   handleBeginDateChange: function(event) {
-    console.log("Begin Date" + event.target.value);
     this.setState({ begin_date: event.target.value });
-
   },
 
   handleEndDateChange: function(event) {
-    console.log("End Date: " + event.target.value);
     this.setState({ end_date: event.target.value });
-
   },
 
   // When a user submits...
@@ -36,7 +30,6 @@ var Form = React.createClass({
     event.preventDefault();
 
     // Set the parent to have the search term
-    console.log(this.state.begin_date);
     this.props.setTerm(this.state.term, this.state.begin_date, this.state.end_date) ;
   
     // this.props.setBeginDate(this.state.begin_date);
@@ -80,6 +73,7 @@ var Form = React.createClass({
                 placeholder="YYYY"
                 name="begin-year"
               />
+
             </div>
              &nbsp; &nbsp; 
             <div className="form-group">

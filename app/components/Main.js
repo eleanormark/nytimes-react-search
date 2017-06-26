@@ -45,7 +45,7 @@ var Main = React.createClass({
     let indexToRemove = -1
 
     for (let i = 0; i < this.state.results.length; i++) {
-      if (this.state.results[i]._id === id) {
+      if (this.state.results[i].url === id) {
         indexToRemove = i
       }
     }
@@ -76,6 +76,7 @@ var Main = React.createClass({
 
         <div className="row">
             <h5><strong>
+              &nbsp;&nbsp;&nbsp;&nbsp;
               {this.state.results.length ? "Search Results" : "" }
             </strong></h5>   
         </div>

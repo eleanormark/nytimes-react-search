@@ -10,7 +10,7 @@ var Article = require("./models/Article");
 // Create Instance of Express
 var app = express();
 // Sets an initial port. We'll use this later in our listener
-var PORT = process.env.PORT || 8001;
+var PORT = process.env.PORT || 8000;
 
 // Run Morgan for Logging
 app.use(logger("dev"));

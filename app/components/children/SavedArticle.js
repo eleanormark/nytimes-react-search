@@ -42,11 +42,14 @@ var SavedArticle = React.createClass({
           {/* Here we use a map function to loop through an array in JSX */}
           {this.state.result.map(function(articleInfo, i) {
             return (
-              <div key={i}>
-                <button onClick={that.handleDelete.bind(that, articleInfo)} className="btn btn-default btn-xs">Delete</button>
-                &nbsp; &nbsp; 
-                <a target="_blank" href={articleInfo.url}>{articleInfo.title}</a>
-                &nbsp;•&nbsp;Saved Date {articleInfo.date.substring(0,10)}
+              <div className="panel panel-default">
+                <div className="panel-body">
+                  <div key={i}>
+                    <a target="_blank" href={articleInfo.url}>{articleInfo.title}</a>
+                    &nbsp;•&nbsp;Saved Date {articleInfo.date.substring(0,10)}
+                    <button onClick={that.handleDelete.bind(that, articleInfo)} className="btn btn-default btn-xs pull-right">Delete</button>
+                  </div>
+                </div>
               </div>
             );
           })}
