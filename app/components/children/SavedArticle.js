@@ -6,7 +6,7 @@ var helpers = require("../utils/helpers");
 var SavedArticle = React.createClass({
 
   getInitialState: function() {
-    return { result:[]};
+    return { result:[] };
   },
 
   componentDidMount: function() {

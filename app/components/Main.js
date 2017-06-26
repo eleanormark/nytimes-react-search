@@ -12,8 +12,6 @@ var helpers = require("./utils/helpers");
 // Creating the Main component
 var Main = React.createClass({
 
-  // Here we set a generic state associated with the number of clicks
-  // Note how we added in this history state variable
   getInitialState: function() {
     return { searchTerm: "", searchBegindate:"", searchEnddate:"", results: [], savedArticls: [] };
   },
@@ -29,14 +27,11 @@ var Main = React.createClass({
         end_date: this.state.searchEnddate
       };
 
-    console.log(obj);
       // Run the query for the address
       helpers.runQuery(obj).then(function(data) {
         if (data !== this.state.results) {
-          console.log("Address", data);
           this.setState({ results: data });
         } 
-
       }.bind(this));
 
       this.setState({searchTerm: ""});
@@ -59,13 +54,8 @@ var Main = React.createClass({
   },
   // This function allows childrens to update the parent.
   setTerm: function(term, begin_date, end_date) {
-    console.log(term);
     this.setState({ searchTerm: term });
-
-    console.log(begin_date);
     this.setState({ searchBegindate: begin_date });
-
-    console.log(end_date);
     this.setState({ searchEnddate: end_date });
   },
 
@@ -73,33 +63,27 @@ var Main = React.createClass({
   render: function() {
     return (
       <div className="container">
+
         <div className="row">
           <div className="jumbotron">
             <h2 className="text-center">New York Times Search</h2>
           </div>
         </div>
+
         <div className="row">
-
           <Form setTerm={this.setTerm} />
-
         </div>
 
         <div className="row">
-
-          {/*<Results articleInfo={this.state.results} />*/}
           {this.state.results.map(function(res, i) {
                 return (
                   <Results removeResult={this.removeResult} articleInfo={res} key={i} />
                 );
           }.bind(this))}
-
         </div>
 
-
         <div className="row">
-
           <SavedArticle savedArticleInfo={this.state.savedArticls} />
-
         </div>
 
       </div>

@@ -12,12 +12,20 @@ var Results = React.createClass({
     }.bind(this))
   },
 
+
+  handleDelete: function() {
+    event.preventDefault();
+      this.props.removeResult(this.props.articleInfo._id)
+  },
+
   render: function() {
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
           <button onClick={this.handleSubmit} className="btn btn-default btn-xs">Save</button>
-           &nbsp; &nbsp; 
+           &nbsp;
+          <button onClick={this.handleDelete} className="btn btn-default btn-xs">Delete</button>
+           &nbsp; &nbsp;
            <a target="_blank" href={this.props.articleInfo.url}>{this.props.articleInfo.title}</a>
            &nbsp;•&nbsp; {this.props.articleInfo.pub_date.substring(0,10)}
       </div>
