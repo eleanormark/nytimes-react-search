@@ -46,9 +46,6 @@ var Form = React.createClass({
   render: function() {
     return (
       <div className="panel panel-default">
-        <div className="panel-heading">
-          <h3 className="panel-title">Query</h3>
-        </div>
         <div className="panel-body">
           <form className="form-inline" onSubmit={this.handleSubmit}>
             <div className="form-group">
@@ -56,11 +53,6 @@ var Form = React.createClass({
                 Search Term: &nbsp; 
               </label>
 
-              {/*
-                Note how each of the form elements has an id that matches the state.
-                This is not necessary but it is convenient.
-                Also note how each has an onChange event associated with our handleChange event.
-              */}
               <input
                 value={this.state.term}
                 type="text"
@@ -70,8 +62,9 @@ var Form = React.createClass({
                 required
                 name="search-term"
               />
-               &nbsp; &nbsp; 
+               
             </div>
+            &nbsp; &nbsp; 
             <div className="form-group">
               <label for="begin-year" className="">
                  Begin Year:  &nbsp;
@@ -87,8 +80,8 @@ var Form = React.createClass({
                 placeholder="YYYY"
                 name="begin-year"
               />
-               &nbsp; &nbsp; 
             </div>
+             &nbsp; &nbsp; 
             <div className="form-group">
               <label for="end-year" className="">
                  End Year: &nbsp; 
@@ -104,9 +97,9 @@ var Form = React.createClass({
                 placeholder="YYYY"
                 name="end-year"
               />
-                 &nbsp; &nbsp; 
+        
               </div>
-    
+              &nbsp; &nbsp;   
               <button
                 className="btn btn-default"
                 type="submit"

@@ -63,10 +63,10 @@ var Main = React.createClass({
   render: function() {
     return (
       <div className="container">
-
         <div className="row">
           <div className="jumbotron">
             <h2 className="text-center">New York Times Search</h2>
+            <button className="btn btn-default pull-right">Saved Articles</button>
           </div>
         </div>
 
@@ -74,6 +74,11 @@ var Main = React.createClass({
           <Form setTerm={this.setTerm} />
         </div>
 
+        <div className="row">
+            <h5><strong>
+              {this.state.results.length ? "Search Results" : "" }
+            </strong></h5>   
+        </div>
         <div className="row">
           {this.state.results.map(function(res, i) {
                 return (
