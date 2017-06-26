@@ -41,11 +41,11 @@ var Main = React.createClass({
 
   // This function allows childrens to update the parent.
 
-  removeResult: function(id) {
+  removeResult: function(url) {
     let indexToRemove = -1
 
     for (let i = 0; i < this.state.results.length; i++) {
-      if (this.state.results[i].url === id) {
+      if (this.state.results[i].url === url) {
         indexToRemove = i
       }
     }
