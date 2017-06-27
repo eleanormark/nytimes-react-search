@@ -20,7 +20,8 @@ app.use(express.static("./public"));
 
 // MongoDB Configuration configuration (Change this URL to your own DB)
 // mongoose.connect("mongodb://admin:codingrocks@ds023664.mlab.com:23664/reactlocate");
-mongoose.connect("mongodb://localhost/reactdb");
+// mongoose.connect("mongodb://localhost/reactdb"); 
+mongoose.connect("mongodb://heroku_wcvjn5pz:g2lm71lirfr6kbr5tf08p8a8n3@ds145649.mlab.com:45649/heroku_wcvjn5pz"); 
 var db = mongoose.connection;
 
 db.on("error", function(err) {
