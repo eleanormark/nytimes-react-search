@@ -1,10 +1,7 @@
-var express = require ('express');
-var router = express.Router();
-var Article = require('../models/Article');
 
-// This is the route we will send GET requests to retrieve our most recent search data.
-// We will call this route the moment our page gets rendered
-router.get("/saved", function(req, res) {
+var Article = require ('../models/Article');
+
+ module.exports.getArticles = function (req, res) {
 
   // We will find all the records, sort it in descending order, then limit the records to 10
   Article.find({}).sort([
@@ -17,11 +14,9 @@ router.get("/saved", function(req, res) {
       res.send(doc);
     }
   });
-});
+}
 
-// This is the route we will send POST requests to save each search.
-router.post("/saved", function(req, res) {
-  console.log("BODY: " + req.body._id);
+module.exports.postArticle = function(req, res) {
 
   // Here we'll save the location based on the JSON input.
   // We'll use Date.now() to always get the current date time
@@ -40,9 +35,9 @@ router.post("/saved", function(req, res) {
       res.send("Saved Search");
     }
   });
-});
+}
 
-router.put("/saved", function(req, res) {
+module.exports.deleteArticle = function(req, res) {
     console.log(req.body);
     Article.remove({ _id: req.body._id}, function(err) {
         if (!err) {
@@ -51,7 +46,4 @@ router.put("/saved", function(req, res) {
             console.log(err);
         }
     });
-
-});
-
-module.exports = router;
+}

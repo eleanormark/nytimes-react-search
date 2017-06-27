@@ -2,7 +2,6 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
-
 var Article = require("./models/Article");
 
 // Create Instance of Express
@@ -32,15 +31,12 @@ db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
 
+//initialize api routes
+app.use("/api", require("./routes/apiRoutes"));
 // Main "/" Route. This will redirect the user to our rendered React application
-app.get("/", function(req, res) {
-  res.sendFile(__dirname + "/public/index.html");
-});
-
-//initialize routes
-app.use("/api", require("./routes/api"));
+app.use("/", require("./routes/viewRoutes"));
 
 // Listener
 app.listen(PORT, function() {
-  console.log("App listening on PORT: " + PORT);
+  console.log("App listening for requests on PORT: " + PORT);
 });
