@@ -13,7 +13,25 @@ var helpers = require("./utils/helpers");
 var Main = React.createClass({
 
   getInitialState: function() {
-    return { searchTerm: "", searchBegindate:"", searchEnddate:"", results: [], savedArticls: [] };
+    return { searchTerm: "", searchBegindate:"", searchEnddate:"", results: [], savedArticleList: [] };
+  },
+
+  componentDidMount: function() {
+    this.getSavedArticles();
+  },
+
+  getSavedArticles: function() {
+    helpers.getSaved().then(function(response) {
+      if (response !== this.state.avedArticleList) {
+        this.setState({ savedArticleList: response.data });
+      }
+    }.bind(this));
+  },
+
+  handleDeleteSavedArticle: function(article) {
+      helpers.deleteSaved(article._id).then(function(data) {
+        this.getSavedArticles();
+      }.bind(this));
   },
 
   // If the component changes (i.e. if a search is entered)...
@@ -39,8 +57,6 @@ var Main = React.createClass({
 
   },
 
-  // This function allows childrens to update the parent.
-
   removeResult: function(url) {
     let indexToRemove = -1
 
@@ -51,8 +67,9 @@ var Main = React.createClass({
     }
     this.state.results.splice(indexToRemove, 1)
     this.setState({ results: this.state.results})
+    this.getSavedArticles();
   },
-  // This function allows childrens to update the parent.
+  
   setTerm: function(term, begin_date, end_date) {
     this.setState({ searchTerm: term });
     this.setState({ searchBegindate: begin_date });
@@ -66,7 +83,6 @@ var Main = React.createClass({
         <div className="row">
           <div className="jumbotron">
             <h2 className="text-center">New York Times Search</h2>
-            <button className="btn btn-default pull-right">Saved Articles</button>
           </div>
         </div>
 
@@ -82,17 +98,29 @@ var Main = React.createClass({
         </div>
         <div className="row">
           {this.state.results.map(function(res, i) {
-                return (
-                  <Results removeResult={this.removeResult} articleInfo={res} key={i} />
-                );
+            return (
+              <Results removeResult={this.removeResult} articleInfo={res} key={i} />
+            );
           }.bind(this))}
         </div>
-
+        
         <div className="row">
-          <SavedArticle savedArticleInfo={this.state.savedArticls} />
+          <div className="panel panel-default">
+            <div className="panel-heading"><strong>Saved Article(s)</strong></div>
+              <div className="panel-body">
+              {this.state.savedArticleList.map(function(res2, i) {
+                return (
+                  <div className="panel panel-default">
+                    <div className="panel-body">
+                      <SavedArticle handleDeleteSavedArticle={this.handleDeleteSavedArticle} savedArticleInfo={res2}  key={i + "b"}/>
+                    </div>
+                  </div>
+                );
+              }.bind(this))}
+              </div>
+            </div>
+          </div>
         </div>
-
-      </div>
     );
   }
 });

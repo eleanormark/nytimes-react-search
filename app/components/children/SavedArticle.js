@@ -9,51 +9,18 @@ var SavedArticle = React.createClass({
     return { result:[] };
   },
 
-  componentDidMount: function() {
-    this.getSavedArticles();
-  },
-
-  getSavedArticles: function() {
-
-    helpers.getSaved().then(function(response) {
-      if (response !== this.state.result) {
-        this.setState({ result: response.data });
-      }
-    }.bind(this));
-  },
-
-  handleDelete: function(article) {
-    
-      helpers.deleteSaved(article.url).then(function(data) {
-        this.getSavedArticles();
-      }.bind(this));
+  handleDelete: function(event) {
+    event.preventDefault();
+    this.props.handleDeleteSavedArticle(this.props.savedArticleInfo);
   },
 
   // Here we describe this component's render method
   render: function() {
-    var that = this;
-    return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h3 className="panel-title">Saved Article(s)</h3>
-        </div>
-        <div className="panel-body">
-
-          {/* Here we use a map function to loop through an array in JSX */}
-          {this.state.result.map(function(articleInfo, i) {
-            return (
-              <div className="panel panel-default">
-                <div className="panel-body">
-                  <div key={i}>
-                    <a target="_blank" href={articleInfo.url}>{articleInfo.title}</a>
-                    &nbsp;•&nbsp;Saved Date {articleInfo.date.substring(0,10)}
-                    <button onClick={that.handleDelete.bind(that, articleInfo)} className="btn btn-default btn-xs pull-right">Delete</button>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+    return (  
+      <div>
+        <a target="_blank" href={this.props.savedArticleInfo.url}>{this.props.savedArticleInfo.title}</a>
+        &nbsp;•&nbsp;Saved Date {this.props.savedArticleInfo.date.substring(0,10)}
+        <button onClick={this.handleDelete} className="btn btn-default btn-xs pull-right">Delete</button>
       </div>
     );
   }

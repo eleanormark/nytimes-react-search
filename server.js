@@ -10,7 +10,7 @@ var Article = require("./models/Article");
 // Create Instance of Express
 var app = express();
 // Sets an initial port. We'll use this later in our listener
-var PORT = process.env.PORT || 8000;
+var PORT = process.env.PORT || 8001;
 
 // Run Morgan for Logging
 app.use(logger("dev"));
@@ -47,10 +47,10 @@ app.get("/", function(req, res) {
 // We will call this route the moment our page gets rendered
 app.get("/api", function(req, res) {
 
-  // We will find all the records, sort it in descending order, then limit the records to 5
+  // We will find all the records, sort it in descending order, then limit the records to 10
   Article.find({}).sort([
     ["date", "descending"]
-  ]).limit(5).exec(function(err, doc) {
+  ]).limit(10).exec(function(err, doc) {
     if (err) {
       console.log(err);
     }
@@ -85,7 +85,7 @@ app.post("/api", function(req, res) {
 
 app.post("/api/delete", function(req, res) {
     console.log(req.body);
-    Article.remove({ url: req.body.url}, function(err) {
+    Article.remove({ _id: req.body._id}, function(err) {
         if (!err) {
             res.send("DELETED!");
         } else {
