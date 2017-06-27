@@ -1,18 +1,16 @@
-// Include React
 var React = require("react");
 var helpers = require("../utils/helpers");
 
-// Creating the Results component
 var Results = React.createClass({
 
-  handleSaveResult: function() {
+  handleSaveResult: function(event) {
     event.preventDefault();
     helpers.postSaved(this.props.articleInfo).then(function(response) {
       this.props.removeResult(this.props.articleInfo.url)
     }.bind(this))
   },
 
-  handleDeleteResult: function() {
+  handleDeleteResult: function(event) {
     event.preventDefault();
       this.props.removeResult(this.props.articleInfo.url)
   },
@@ -33,5 +31,4 @@ var Results = React.createClass({
   }
 });
 
-// Export the component back for use in other files
 module.exports = Results;

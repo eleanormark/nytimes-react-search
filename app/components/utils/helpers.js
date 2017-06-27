@@ -61,5 +61,4 @@ var helper = {
   },
 };
 
-// We export the API helper
 module.exports = helper;

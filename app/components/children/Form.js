@@ -1,10 +1,8 @@
-// Include React
 var React = require("react");
 
 // Creating the Form component
 var Form = React.createClass({
 
-  // Here we set a generic state associated with the text being searched for
   getInitialState: function() {
     return { term: "", begin_date: "", end_date: "" };
   },
@@ -34,7 +32,7 @@ var Form = React.createClass({
     // this.props.setBeginDate(this.state.begin_date);
     this.setState({ term: "", begin_date: "", end_date: "" });
   },
-  // Here we describe this component's render method
+
   render: function() {
     return (
       <div className="panel panel-default">
@@ -107,5 +105,4 @@ var Form = React.createClass({
   }
 });
 
-// Export the component back for use in other files
 module.exports = Form;
