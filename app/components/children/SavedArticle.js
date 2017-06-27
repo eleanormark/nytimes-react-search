@@ -1,13 +1,8 @@
 // Include React
 var React = require("react");
-var helpers = require("../utils/helpers");
 
 // This is the History component. It will be used to show a log of  recent searches.
 var SavedArticle = React.createClass({
-
-  getInitialState: function() {
-    return { result:[] };
-  },
 
   handleDelete: function(event) {
     event.preventDefault();
