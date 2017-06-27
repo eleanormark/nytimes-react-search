@@ -43,7 +43,7 @@ var Main = React.createClass({
         end_date: this.state.searchEnddate
       };
 
-      // Run the query for the address
+      // Run the query for the user input values
       helpers.runQuery(obj).then(function(data) {
         if (data !== this.state.results) {
           this.setState({ results: data });

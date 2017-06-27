@@ -38,12 +38,12 @@ var helper = {
 
   // This function hits our own server to retrieve the record of query results
   getSaved: function() {
-    return axios.get("/api");
+    return axios.get("/api/saved");
   },
 
   // This function posts new searches to our database.
   postSaved: function(obj) {
-    return axios.post("/api", {
+    return axios.post("/api/saved", {
       title: obj.title,
       snippet: obj.snippet,
       url: obj.url,
@@ -54,9 +54,8 @@ var helper = {
 
   deleteSaved: function(id) {
       console.log(id);
-      return axios.post("/api/delete", {
+      return axios.put("/api/saved", {
           _id: id
-
       });
   },
 };

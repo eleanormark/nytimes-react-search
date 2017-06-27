@@ -1,6 +1,5 @@
 var React = require("react");
 
-// Creating the Form component
 var Form = React.createClass({
 
   getInitialState: function() {
