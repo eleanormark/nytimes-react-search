@@ -1,5 +1,5 @@
 {
-  "name": "react-example",
+  "name": "New York Times Search",
   "version": "1.0.0",
   "description": "",
   "main": "public/index.html",
@@ -9,7 +9,7 @@
     "start": "node server",
     "build": "webpack"
   },
-  "author": "Ahmed Haque",
+  "author": "Eleanor Mark",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.12.0",
