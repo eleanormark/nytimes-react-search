@@ -20,7 +20,7 @@ var Main = React.createClass({
 
   getSavedArticles: function() {
     helpers.getSaved().then(function(response) {
-      if (response !== this.state.avedArticleList) {
+      if (response !== this.state.savedArticleList) {
         this.setState({ savedArticleList: response.data });
       }
     }.bind(this));
